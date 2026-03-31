@@ -1,5 +1,6 @@
 def main():
 
+    print("Banker's algorithm demonstration")
     n = 5   # Numbers of processe
     r = 3   # Number of resources
     alloc = [[0, 1, 0],
@@ -49,5 +50,5 @@ def main():
 
     return
 
-if __name__ == main:
+if __name__ == "__main__":
     main()
