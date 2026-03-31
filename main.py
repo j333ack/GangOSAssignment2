@@ -8,14 +8,25 @@ def main():
              [3, 0, 2],
              [2, 1, 1],
              [0, 0, 2]]
+    print("Allocation resources:")
+    for row in alloc:
+        print(*row)
+    print()
 
     max = [[7, 5, 3],
            [3, 2, 2],
            [9, 0, 2],
            [2, 2, 2],
            [4, 3, 3]]
+    print("Max resources:")
+    for row in max:
+        print(*row)
+    print()
 
     avail = [3, 3, 2]
+    print("Available resources:")
+    print(*avail, sep=' ')
+    print()
 
     f = [0] * n     # Intialize finished array to 0
     ans = [0] * n
@@ -46,7 +57,7 @@ def main():
     print("The safe sequence is as follows")
     for i in range(n - 1):
         print(f' P{ans[i]} ->', end='')
-    print(f' P{ans[n - 1]}')
+    print(f' P{ans[n - 1]}\n')
 
     return
 
