@@ -1,3 +1,5 @@
+import sys
+
 def main():
 
     print("Banker's algorithm demonstration")
@@ -23,7 +25,8 @@ def main():
         print(*row)
     print()
 
-    avail = [3, 3, 2]
+#    avail = [3, 3, 2]  # Request granted
+    avail = [1, 1, 1]  # Request denied
     print("Available resources:")
     print(*avail, sep=' ')
     print()
@@ -32,6 +35,7 @@ def main():
     ans = [0] * n
     ind = 0
     need = [[0] * r for _ in range(n)]
+    unsafe = False
 
     for i in range(n):
         for j in range(r):
@@ -45,6 +49,8 @@ def main():
                 for j in range(r):
                     if need[i][j] > avail[j]:
                         flag = 1
+#                        print("No guaranteed safe sequence!")
+                        unsafe = True
                         break
 
                 if flag == 0:
@@ -53,6 +59,16 @@ def main():
                     for y in range(r):
                         avail[y] += alloc[i][y]
                     f[i] = 1
+
+    print("Need matrix:")
+    for row in need:
+        print(*row)
+    print()
+
+    if unsafe:
+        print("No guaranteed safe sequence!")
+        print()
+        sys.exit()
 
     print("The safe sequence is as follows")
     for i in range(n - 1):
